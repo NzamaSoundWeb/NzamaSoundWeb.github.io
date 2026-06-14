@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nzama Sounds – Professional PA System for Hire in Durban. Weddings, parties, church services, corporate events & more. Call 067 426 9853.">
+    <title>Nzama Sounds | PA System For Hire – Durban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================
+           RESET & VARIABLES
+        ============================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --orange:       #F55C00;
+            --orange-light: #FF7A1A;
+            --orange-glow:  rgba(245, 92, 0, 0.25);
+            --black:        #090909;
+            --dark:         #111111;
+            --card:         #191919;
+            --border:       #272727;
+            --white:        #FFFFFF;
+            --grey:         #777777;
+            --light-grey:   #BBBBBB;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================
+           NAVIGATION
+        ============================ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 2.5rem;
+            background: rgba(9, 9, 9, 0.93);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.4s;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 4px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--orange); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--orange); }
+        .nav-cta {
+            background: var(--orange) !important;
+            color: var(--white) !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 5px;
+        }
+        .nav-cta:hover { background: var(--orange-light) !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.35s;
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 250;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+        .nav-overlay.open { display: flex; }
+        .nav-overlay a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-overlay a:hover { color: var(--orange); }
+        .nav-overlay-close {
+            position: absolute;
+            top: 1.5rem; right: 2rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* ============================
+           HERO
+        ============================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 9rem 2rem 5rem;
+        }
+
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(245, 92, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 92, 0, 0.04) 1px, transparent 1px);
+            background-size: 70px 70px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(245, 92, 0, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-script {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            color: var(--white);
+            opacity: 0.85;
+            margin-bottom: 0.3rem;
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(5rem, 16vw, 11rem);
+            line-height: 0.88;
+            letter-spacing: 4px;
+            animation: fadeUp 0.8s ease 0.15s both;
+        }
+
+        .hero-title-orange { color: var(--orange); display: block; }
+
+        /* Equalizer bars — the signature element */
+        .equalizer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 5px;
+            height: 64px;
+            margin: 2.2rem auto 1.6rem;
+        }
+        .eq-bar {
+            width: 6px;
+            border-radius: 3px 3px 0 0;
+            transform-origin: bottom;
+            animation: eq var(--d) ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(odd)  { background: var(--orange); }
+        .eq-bar:nth-child(even) { background: var(--white); opacity: 0.5; }
+
+        .eq-bar:nth-child(1)  { height: 28%; --d: 0.38s; }
+        .eq-bar:nth-child(2)  { height: 58%; --d: 0.55s; }
+        .eq-bar:nth-child(3)  { height: 95%; --d: 0.31s; }
+        .eq-bar:nth-child(4)  { height: 72%; --d: 0.49s; }
+        .eq-bar:nth-child(5)  { height: 100%; --d: 0.42s; }
+        .eq-bar:nth-child(6)  { height: 55%; --d: 0.36s; }
+        .eq-bar:nth-child(7)  { height: 80%; --d: 0.61s; }
+        .eq-bar:nth-child(8)  { height: 40%; --d: 0.44s; }
+        .eq-bar:nth-child(9)  { height: 70%; --d: 0.52s; }
+        .eq-bar:nth-child(10) { height: 85%; --d: 0.39s; }
+        .eq-bar:nth-child(11) { height: 48%; --d: 0.67s; }
+        .eq-bar:nth-child(12) { height: 62%; --d: 0.33s; }
+        .eq-bar:nth-child(13) { height: 90%; --d: 0.46s; }
+        .eq-bar:nth-child(14) { height: 35%; --d: 0.58s; }
+
+        @keyframes eq {
+            from { transform: scaleY(0.2); opacity: 0.6; }
+            to   { transform: scaleY(1);   opacity: 1;   }
+        }
+
+        .hero-tagline {
+            font-size: 0.82rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 2.8rem;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+        .hero-tagline strong { color: var(--orange); }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            border: 2px solid var(--orange);
+            transition: all 0.3s;
+        }
+        .btn-orange:hover { background: transparent; color: var(--orange); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--grey);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease 1.2s both;
+        }
+        .scroll-mouse {
+            width: 20px; height: 32px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            position: relative;
+        }
+        .scroll-mouse::after {
+            content: '';
+            position: absolute;
+            top: 5px; left: 50%;
+            transform: translateX(-50%);
+            width: 3px; height: 6px;
+            background: var(--orange);
+            border-radius: 2px;
+            animation: wheel 1.6s ease infinite;
+        }
+        @keyframes wheel {
+            from { opacity: 1; top: 5px; }
+            to   { opacity: 0; top: 16px; }
+        }
+
+        /* ============================
+           SHARED SECTION STYLES
+        ============================ */
+        section { padding: 6.5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.8rem;
+        }
+        .sec-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            letter-spacing: 2px;
+            line-height: 0.95;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .sec-sub {
+            font-size: 0.92rem;
+            color: var(--grey);
+            max-width: 550px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
+        }
+
+        /* Reveal animation — only hides when JS is active (progressive enhancement) */
+        .js-ready .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .js-ready .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* ============================
+           SERVICES
+        ============================ */
+        .services { background: var(--dark); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s;
+        }
+        .card:hover { border-color: rgba(245,92,0,0.5); transform: translateY(-5px); }
+        .card:hover::after { transform: scaleX(1); }
+
+        .card-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+        .card-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.4rem; }
+        .card-body { font-size: 0.84rem; color: var(--grey); line-height: 1.65; }
+
+        /* ============================
+           EQUIPMENT
+        ============================ */
+        .equipment { background: var(--black); }
+
+        .eq-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .eq-list { display: flex; flex-direction: column; gap: 1rem; }
+
+        .eq-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.3rem 1.6rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .eq-item:hover { border-color: var(--orange); transform: translateX(5px); }
+
+        .eq-item-icon { font-size: 2rem; flex-shrink: 0; }
+        .eq-item-name { font-weight: 600; font-size: 0.95rem; }
+        .eq-item-desc { font-size: 0.8rem; color: var(--grey); margin-top: 2px; }
+
+        .eq-promo {
+            background: linear-gradient(145deg, var(--orange) 0%, #C73D00 100%);
+            border-radius: 14px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 360px;
+            position: relative;
+            overflow: hidden;
+        }
+        .eq-promo::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -25%;
+            width: 70%; height: 70%;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .eq-promo-big {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.2rem;
+            letter-spacing: 4px;
+            position: relative;
+        }
+        .eq-promo-sub {
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.4rem;
+        }
+        .eq-badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: rgba(0,0,0,0.25);
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* ============================
+           PRICING
+        ============================ */
+        .pricing { background: var(--dark); }
+
+        .rate-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--card);
+            border: 1px solid var(--orange);
+            border-radius: 50px;
+            padding: 0.65rem 1.8rem;
+            font-size: 0.88rem;
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+        }
+        .rate-pill strong { color: var(--orange); font-size: 1.05rem; }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .price-card:not(.hot):hover { border-color: var(--orange); transform: translateY(-5px); }
+
+        .price-card.hot {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(245, 92, 0, 0.4);
+        }
+
+        .hot-badge {
+            position: absolute;
+            top: -13px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            color: var(--orange);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 18px;
+            border-radius: 50px;
+        }
+
+        .price-hrs {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-hrs-label {
+            font-size: 0.72rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .price-eff {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 2rem;
+        }
+        .price-card:not(.hot) .price-eff { color: var(--grey); }
+
+        .price-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .price-card:not(.hot) .price-btn {
+            background: var(--orange);
+            color: var(--white);
+        }
+        .price-card:not(.hot) .price-btn:hover { background: var(--orange-light); }
+        .price-card.hot .price-btn {
+            background: var(--white);
+            color: var(--orange);
+        }
+        .price-card.hot .price-btn:hover { background: rgba(255,255,255,0.88); }
+
+        .dj-note {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.3rem 1.8rem;
+            font-size: 0.9rem;
+            color: var(--light-grey);
+        }
+        .dj-note-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .dj-note strong { color: var(--orange); }
+
+        /* ============================
+           CONTACT
+        ============================ */
+        .contact { background: var(--black); }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-channels { display: flex; flex-direction: column; gap: 1rem; }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.6rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: var(--orange); transform: translateX(5px); }
+        .channel-icon { font-size: 1.9rem; flex-shrink: 0; }
+        .channel-label { font-size: 0.72rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1.5px; }
+        .channel-val { font-weight: 600; font-size: 0.98rem; }
+
+        .wa-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            background: #25D366;
+            color: var(--white);
+            padding: 1rem 1.8rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .wa-btn:hover { background: #1ebe5a; }
+        .wa-btn-2 { background: #128C7E; }
+        .wa-btn-2:hover { background: #0f7068; }
+
+        .enquiry-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2.5rem;
+        }
+        .enquiry-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+        }
+
+        .fg { margin-bottom: 1.1rem; }
+        .fg label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.45rem;
+        }
+        .fg input,
+        .fg select,
+        .fg textarea {
+            width: 100%;
+            background: var(--black);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            color: var(--white);
+            padding: 0.78rem 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.3s;
+            -webkit-appearance: none;
+        }
+        .fg input:focus,
+        .fg select:focus,
+        .fg textarea:focus { border-color: var(--orange); }
+        .fg textarea { resize: vertical; min-height: 90px; }
+        .fg select option { background: var(--dark); }
+
+        .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 0.95rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+        .submit-btn:hover { background: var(--orange-light); }
+        .submit-btn:active { transform: scale(0.99); }
+
+        /* ============================
+           FOOTER
+        ============================ */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            padding: 2.8rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            margin-bottom: 0.4rem;
+        }
+        .footer-logo span { color: var(--orange); }
+
+        .footer-sub {
+            font-size: 0.76rem;
+            color: var(--grey);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 1.8rem;
+        }
+        .footer-links a {
+            font-size: 0.8rem;
+            color: var(--grey);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--orange); }
+
+        .footer-hr { height: 1px; background: var(--border); margin-bottom: 1.5rem; }
+        .footer-copy { font-size: 0.78rem; color: var(--grey); }
+        .footer-copy span { color: var(--orange); }
+
+        /* ============================
+           TOAST
+        ============================ */
+        .toast {
+            position: fixed;
+            bottom: 2rem; left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--card);
+            border: 1px solid var(--orange);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            opacity: 0;
+            transition: all 0.35s;
+            z-index: 500;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* ============================
+           ANIMATIONS
+        ============================ */
+        @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 0.85; transform: translateY(0); } }
+        @keyframes fadeUp   { from { opacity: 0; transform: translateY(24px);  } to { opacity: 1;    transform: translateY(0); } }
+        @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ============================
+           RESPONSIVE
+        ============================ */
+        @media (max-width: 900px) {
+            .eq-layout { grid-template-columns: 1fr; }
+            .eq-promo { order: -1; min-height: 200px; }
+            .price-grid { grid-template-columns: 1fr; }
+            .price-card.hot { transform: none; box-shadow: 0 10px 40px rgba(245,92,0,0.3); }
+            .contact-layout { grid-template-columns: 1fr; }
+            .fg-row { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            section { padding: 4.5rem 1.5rem; }
+            .hero { padding: 8rem 1.5rem 4.5rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn-orange, .btn-outline { justify-content: center; }
+        }
+
+        @media (max-width: 460px) {
+            .footer-links { flex-direction: column; gap: 1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eq-bar { animation: none; height: 50% !important; }
+            .js-ready .reveal { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================== NAVIGATION ================== -->
+<nav id="nav">
+    <a href="#home" class="nav-logo">NZAMA <span>SOUNDS</span></a>
+    <button class="hamburger" id="ham" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+</nav>
+
+<!-- Mobile overlay nav -->
+<div class="nav-overlay" id="mobileNav">
+    <button class="nav-overlay-close" id="navClose" aria-label="Close menu">×</button>
+    <a href="#services"  onclick="closeMenu()">Services</a>
+    <a href="#equipment" onclick="closeMenu()">Equipment</a>
+    <a href="#pricing"   onclick="closeMenu()">Pricing</a>
+    <a href="#contact"   onclick="closeMenu()" style="color: var(--orange)">Book Now →</a>
+</div>
+
+<!-- ================== HERO ================== -->
+<section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+        <p class="hero-script">For Hire</p>
+        <h1 class="hero-title">
+            Nzama<br>
+            <span class="hero-title-orange">Sounds</span>
+        </h1>
+
+        <!-- Signature: animated equalizer -->
+        <div class="equalizer" aria-hidden="true">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div>
+        </div>
+
+        <p class="hero-tagline">PA System For Hire &nbsp;·&nbsp; <strong>Durban, KZN</strong></p>
+
+        <div class="hero-btns">
+            <a href="#pricing"  class="btn-orange">💰 View Packages</a>
+            <a href="https://wa.me/27674269853?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20enquire%20about%20a%20booking." class="btn-outline" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+        </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-mouse"></div>
+        Scroll
+    </div>
+</section>
+
+<!-- ================== SERVICES ================== -->
+<section class="services" id="services">
+    <div class="container">
+        <span class="eyebrow reveal">What We Cover</span>
+        <h2 class="sec-title reveal">Our Services</h2>
+        <p class="sec-sub reveal">We show up with the sound — you focus on the moment. Nzama Sounds powers events of every shape and size across Durban.</p>
+
+        <div class="services-grid">
+            <div class="card reveal">
+                <div class="card-icon">💍</div>
+                <div class="card-title">Weddings & Door Events</div>
+                <p class="card-body">Crystal-clear audio for your big day, whether it's intimate or large-scale.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🎂</div>
+                <div class="card-title">Birthday Parties</div>
+                <p class="card-body">Make it loud and unforgettable. Great sound for any size celebration.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">✝️</div>
+                <div class="card-title">Church Services & Crusades</div>
+                <p class="card-body">Professional audio for worship — indoors, outdoors, or large crusade events.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🏢</div>
+                <div class="card-title">Workshops & Conferences</div>
+                <p class="card-body">Reliable, clean sound for presentations, panels, and professional setups.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🎉</div>
+                <div class="card-title">Corporate Events</div>
+                <p class="card-body">Elevate your brand's function with high-quality, dependable sound equipment.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🕊️</div>
+                <div class="card-title">Funerals & Memorials</div>
+                <p class="card-body">Respectful, dependable audio support during life's most difficult moments.</p>
+            </div>
+            <div class="card reveal" style="grid-column: span 1;">
+                <div class="card-icon">🏫</div>
+                <div class="card-title">School Events & Conferencing</div>
+                <p class="card-body">Affordable, quality sound for matric events, graduations, and school functions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================== EQUIPMENT ================== -->
+<section class="equipment" id="equipment">
+    <div class="container">
+        <div class="eq-layout">
+            <div>
+                <span class="eyebrow reveal">What's Included</span>
+                <h2 class="sec-title reveal">Our Equipment</h2>
+                <p class="sec-sub reveal">Professional-grade gear, well-maintained and ready to go for your event. No extra charges — it's all included.</p>
+
+                <div class="eq-list">
+                    <div class="eq-item reveal">
+                        <div class="eq-item-icon">🎤</div>
+                        <div>
+                            <div class="eq-item-name">Two Wireless Microphones</div>
+                            <div class="eq-item-desc">Professional cordless handhelds — no cables, no limits</div>
+                        </div>
+                    </div>
+                    <div class="eq-item reveal">
+                        <div class="eq-item-icon">💥</div>
+                        <div>
+                            <div class="eq-item-name">2 Big Bass / Subwoofer Bins</div>
+                            <div class="eq-item-desc">Deep, powerful low-frequency output for real impact</div>
+                        </div>
+                    </div>
+                    <div class="eq-item reveal">
+                        <div class="eq-item-icon">🔊</div>
+                        <div>
+                            <div class="eq-item-name">2 Mid Range Speakers</div>
+                            <div class="eq-item-desc">Full, clear coverage for vocals and music</div>
+                        </div>
+                    </div>
+                    <div class="eq-item reveal">
+                        <div class="eq-item-icon">🎛️</div>
+                        <div>
+                            <div class="eq-item-name">24 Channel Mixer</div>
+                            <div class="eq-item-desc">Full control over every input for any event setup</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="eq-promo reveal">
+                <div class="eq-promo-big">PA SYSTEM</div>
+                <div class="eq-promo-sub">Professional Grade</div>
+                <div class="eq-badge">🎵 Full Setup Included</div>
+                <div class="eq-badge">📍 Serving Durban & Surrounds</div>
+                <div class="eq-badge" style="margin-top: 0.6rem">⚙️ Setup & Takedown by Us</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================== PRICING ================== -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <span class="eyebrow reveal">Transparent Rates</span>
+        <h2 class="sec-title reveal">Our Packages</h2>
+        <p class="sec-sub reveal">Simple, honest pricing. All packages include full equipment, setup, and takedown — no hidden costs.</p>
+
+        <div class="reveal">
+            <div class="rate-pill">
+                <span>🕐</span>
+                Need just an hour? Flexible rate: <strong>R550 / hour</strong>
+            </div>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card reveal">
+                <div class="price-hrs">2</div>
+                <div class="price-hrs-label">Hours</div>
+                <div class="price-amount">R 1,000</div>
+                <div class="price-eff">R500 per hour effective</div>
+                <a href="https://wa.me/27674269853?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20book%20the%202-hour%20package%20(R1000)." class="price-btn" target="_blank" rel="noopener">Book This →</a>
+            </div>
+
+            <div class="price-card hot reveal">
+                <div class="hot-badge">MOST POPULAR</div>
+                <div class="price-hrs">4</div>
+                <div class="price-hrs-label">Hours</div>
+                <div class="price-amount">R 2,100</div>
+                <div class="price-eff">R525 per hour effective</div>
+                <a href="https://wa.me/27674269853?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20book%20the%204-hour%20package%20(R2100)." class="price-btn" target="_blank" rel="noopener">Book This →</a>
+            </div>
+
+            <div class="price-card reveal">
+                <div class="price-hrs">6</div>
+                <div class="price-hrs-label">Hours</div>
+                <div class="price-amount">R 3,150</div>
+                <div class="price-eff">R525 per hour effective</div>
+                <a href="https://wa.me/27674269853?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20book%20the%206-hour%20package%20(R3150)." class="price-btn" target="_blank" rel="noopener">Book This →</a>
+            </div>
+        </div>
+
+        <div class="dj-note reveal">
+            <div class="dj-note-icon">🎧</div>
+            <p><strong>Want a Professional DJ?</strong> Add one to any package for just an additional <strong>R200</strong>. Just mention it when you book!</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================== CONTACT ================== -->
+<section class="contact" id="contact">
+    <div class="container">
+        <span class="eyebrow reveal">Let's Talk</span>
+        <h2 class="sec-title reveal">Book Your Event</h2>
+        <p class="sec-sub reveal">Ready to make your event sound unreal? Hit us up on WhatsApp or fill in the quick enquiry form and we'll get back to you fast.</p>
+
+        <div class="contact-layout">
+            <!-- Left: channels -->
+            <div class="contact-channels">
+                <a href="tel:0674269853" class="channel-link reveal">
+                    <div class="channel-icon">📞</div>
+                    <div>
+                        <div class="channel-label">Call Us</div>
+                        <div class="channel-val">067 426 9853</div>
+                    </div>
+                </a>
+                <a href="tel:0672833549" class="channel-link reveal">
+                    <div class="channel-icon">📞</div>
+                    <div>
+                        <div class="channel-label">Call Us</div>
+                        <div class="channel-val">067 283 3549</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/nzamasounds" class="channel-link reveal" target="_blank" rel="noopener">
+                    <div class="channel-icon">📸</div>
+                    <div>
+                        <div class="channel-label">Instagram</div>
+                        <div class="channel-val">@Nzama Sounds</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/27674269853?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20make%20a%20booking." class="wa-btn reveal" target="_blank" rel="noopener">
+                    💬 WhatsApp: 067 426 9853
+                </a>
+                <a href="https://wa.me/27672833549?text=Hi%20Nzama%20Sounds!%20I%27d%20like%20to%20make%20a%20booking." class="wa-btn wa-btn-2 reveal" target="_blank" rel="noopener">
+                    💬 WhatsApp: 067 283 3549
+                </a>
+            </div>
+
+            <!-- Right: enquiry form -->
+            <div class="enquiry-box reveal">
+                <div class="enquiry-title">Quick Enquiry</div>
+
+                <div class="fg">
+                    <label for="f-name">Your Name *</label>
+                    <input type="text" id="f-name" placeholder="e.g. Sipho Dlamini" autocomplete="name">
+                </div>
+
+                <div class="fg-row">
+                    <div class="fg">
+                        <label for="f-phone">Phone Number</label>
+                        <input type="tel" id="f-phone" placeholder="082 000 0000" autocomplete="tel">
+                    </div>
+                    <div class="fg">
+                        <label for="f-date">Event Date</label>
+                        <input type="date" id="f-date">
+                    </div>
+                </div>
+
+                <div class="fg">
+                    <label for="f-event">Event Type *</label>
+                    <select id="f-event">
+                        <option value="" disabled selected>Select event type</option>
+                        <option>Wedding / Door Event</option>
+                        <option>Birthday Party</option>
+                        <option>Church Service / Crusade</option>
+                        <option>Workshop / Conference</option>
+                        <option>Corporate Event</option>
+                        <option>Funeral / Memorial</option>
+                        <option>School Event / Conferencing</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="fg">
+                    <label for="f-pkg">Package</label>
+                    <select id="f-pkg">
+                        <option value="" disabled selected>Select a package</option>
+                        <option>2 Hours — R1,000</option>
+                        <option>4 Hours — R2,100 (Popular)</option>
+                        <option>6 Hours — R3,150</option>
+                        <option>Hourly — R550/hr</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+
+                <div class="fg">
+                    <label for="f-msg">Anything else?</label>
+                    <textarea id="f-msg" placeholder="Location, number of guests, DJ needed, etc..."></textarea>
+                </div>
+
+                <button class="submit-btn" onclick="sendWA()">Send via WhatsApp →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer>
+    <div class="footer-logo">NZAMA <span>SOUNDS</span></div>
+    <div class="footer-sub">PA System For Hire &nbsp;·&nbsp; Durban, KwaZulu-Natal</div>
+
+    <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="footer-hr"></div>
+    <p class="footer-copy">© 2025 Nzama Sounds &nbsp;·&nbsp; Made with <span>♥</span> for Durban events</p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ================== SCRIPTS ================== -->
+<script>
+    /* ---- MOBILE NAV ---- */
+    const ham   = document.getElementById('ham');
+    const mNav  = document.getElementById('mobileNav');
+    const nClose = document.getElementById('navClose');
+
+    ham.addEventListener('click', () => mNav.classList.add('open'));
+    nClose.addEventListener('click', () => mNav.classList.remove('open'));
+    function closeMenu() { mNav.classList.remove('open'); }
+
+    /* ---- NAV SCROLL TINT ---- */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 60
+            ? 'rgba(245,92,0,0.25)'
+            : 'var(--border)';
+    });
+
+    /* ---- SCROLL REVEAL ---- */
+    // Mark body so CSS knows JS is running — content hidden only now
+    document.body.classList.add('js-ready');
+
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const delay = parseInt(entry.target.dataset.d || 0);
+                setTimeout(() => entry.target.classList.add('in'), delay);
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0,                    // trigger the moment ANY pixel is visible
+        rootMargin: '0px 0px -40px 0px' // trigger slightly before bottom of viewport
+    });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+        el.dataset.d = (i % 4) * 70; // lighter stagger delays
+        revealObs.observe(el);
+    });
+
+    // Safety net: after 1.5s, force-show anything still hidden (e.g. elements already on screen)
+    setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+    }, 1500);
+
+    /* ---- WHATSAPP FORM ---- */
+    function sendWA() {
+        const name  = document.getElementById('f-name').value.trim();
+        const phone = document.getElementById('f-phone').value.trim();
+        const date  = document.getElementById('f-date').value;
+        const evt   = document.getElementById('f-event').value;
+        const pkg   = document.getElementById('f-pkg').value;
+        const msg   = document.getElementById('f-msg').value.trim();
+
+        if (!name) { flash('⚠️ Please enter your name.'); return; }
+        if (!evt)  { flash('⚠️ Please select an event type.'); return; }
+
+        let text = `Hi Nzama Sounds! 👋\n\n`;
+        text += `*Name:* ${name}\n`;
+        if (phone) text += `*Phone:* ${phone}\n`;
+        text += `*Event:* ${evt}\n`;
+        if (pkg)  text += `*Package:* ${pkg}\n`;
+        if (date) {
+            const d = new Date(date + 'T00:00:00');
+            text += `*Date:* ${d.toLocaleDateString('en-ZA', { weekday:'long', day:'numeric', month:'long', year:'numeric' })}\n`;
+        }
+        if (msg)  text += `*Details:* ${msg}\n`;
+        text += `\nI'd like to enquire about booking your PA system. 🎶`;
+
+        const url = `https://wa.me/27674269853?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+        flash('✅ Opening WhatsApp...');
+    }
+
+    /* ---- TOAST ---- */
+    function flash(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._t);
+        t._t = setTimeout(() => t.classList.remove('show'), 3200);
+    }
+
+    /* ---- EQUALIZER: pause on reduced motion ---- */
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.eq-bar').forEach(b => {
+            b.style.animation = 'none';
+            b.style.height = '50%';
+        });
+    }
+</script>
+
+</body>
+</html>
